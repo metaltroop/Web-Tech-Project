@@ -1,0 +1,1181 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const navbarToggle = document.querySelector('[data-collapse-toggle]');
+        const navbar = document.getElementById('navbar-default');
+        const navbarLinks = navbar.querySelectorAll('a');
+
+        navbarToggle.addEventListener('click', function () {
+          navbar.classList.toggle('hidden');
+          // Add other logic if needed, such as changing the icon
+        });
+
+        navbarLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            navbar.classList.add('hidden');
+          });
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const formData = {
+            username: document.getElementById("username").value,
+            email: document.getElementById("email").value,
+            phoneNO: document.getElementById("phoneNO").value,
+            city: document.getElementById("city").value,
+            message: document.getElementById("message").value
+          };
+
+          try {
+            const response = await fetch("http://localhost:3008/contactus", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+              alert("Message sent successfully!");
+              // You can redirect or perform any other action after successful submission
+            } else {
+              const data = await response.json();
+              alert(data.message || "Failed to send message");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred, please try again later.");
+          }
+        });
+      });
+    </script>
+
+
+    <title>Document</title>
+  </head>
+  <nav
+    class="bg-[#ffffffd8] border-b-4 border-opacity-25 border-b-black fixed w-[100%] z-20 shadow-2xl"
+  >
+    <div
+      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+    >
+      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img
+          src="./assets/logo.png"
+          class="h-8 rounded-md"
+          alt="Flowbite Logo"
+        />
+        <span
+          class="self-center text-2xl font-semibold whitespace-nowrap text-black"
+          >MetalTroop</span
+        >
+      </a>
+      <button
+        data-collapse-toggle="navbar-default"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul
+        
+          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0"
+        >
+          <li>
+            <a
+              href="#home"
+              
+              
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              aria-current="page"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#pricing"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Pricing</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-black md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <body class="bg-[#ffffff]">
+    <div class="">
+      <div
+        id="home"
+        class="z-10 flex items-center h-[70vh] px-20 lg:h-[70vh] justify-between lg:px-40 bg-[#D9E8FE]"
+      >
+        <div class="lg:w-[400px] lg:translate-y-24 flex flex-col gap-5">
+          <h1
+            class="text-[#292E3D] lg:font-[600] text-4xl font-semibold lg:text-[40px] font-[Poppins] text-left pt- lg:pt-28"
+          >
+            We Are CODERS !
+          </h1>
+          <p class="text-justify">
+            &nbsp &nbsp we believe in the synergy of marketing prowess, creative
+            thinking, and the power of coding. Our platform is a vibrant hub
+            where developers embark on a journey to merge technical expertise
+            with creative ingenuity, creating digital experiences that leave a
+            lasting impact.
+          </p>
+          <div class="relative mb-6">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 16"
+              >
+                <path
+                  d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"
+                />
+                <path
+                  d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="flex bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm"
+            >
+              <input
+                type="text"
+                id="input-group-1"
+                class="bg-transparent text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                placeholder="name@flowbite.com"
+              />
+              <a
+                href="#_"
+                class="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-indigo-300 ring-offset-indigo-200 hover:ring-offset-indigo-500 ease focus:outline-none"
+              >
+                <span
+                  class="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"
+                ></span>
+                <span
+                  class="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"
+                ></span>
+                <span class="relative z-20 flex items-center text-sm">
+                  Subscribe
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="lg:block hidden">
+          <img src="./assets/home1.png" class="translate-y-36 w-[500px]" />
+        </div>
+      </div>
+
+      <div class="translate-y-[-1px] z-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#D9E8FE"
+            fill-opacity="1"
+            d="M0,192L34.3,197.3C68.6,203,137,213,206,234.7C274.3,256,343,288,411,266.7C480,245,549,171,617,138.7C685.7,107,754,117,823,144C891.4,171,960,213,1029,229.3C1097.1,245,1166,235,1234,208C1302.9,181,1371,139,1406,117.3L1440,96L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- services -->
+    <div id="services" class="flex justify-center h-auto items-center flex-col">
+      <div class="flex flex-col items-center pb-10 gap-4">
+        <h1 class="text-6xl font-semibold text-[#292E3D] font-[Poppins] pt-20">
+          Services
+        </h1>
+        <p class="font-[Poppins] pl-10 text-center">
+          Expert services tailored for your success, delivering quality results
+          consistently.
+        </p>
+      </div>
+      <div
+        class="grid grid-col grid-cols-1 md:grid-cols-2 md:px-5 lg:grid-cols-3 gap-20"
+      >
+        <div
+          class="flex flex-col justify-center items-center w-[350px] h-[350px] border-4 gap-2 p-5"
+        >
+          <div class="w-20 h-20 bg-slate-100 rounded-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="p-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
+              />
+            </svg>
+          </div>
+          <h1>Website Development</h1>
+          <p class="text-center">
+            A web design studio that offers corporate web design.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col justify-center items-center w-[350px] h-[350px] border-4 gap-2 p-5"
+        >
+          <div class="w-20 h-20 bg-slate-100 rounded-2xl ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="p-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+            </svg>
+            
+          </div>
+          <h1>App Development</h1>
+          <p class="text-center">
+            As We Know, Android is the Latest technology. Most Companies Prefer
+            Android development.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col justify-center items-center w-[350px] h-[350px] border-4 gap-2 p-5"
+        >
+          <div class="w-20 h-20 bg-slate-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="p-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            
+          </div>
+          <h1>Software Development</h1>
+          <p class="text-center">
+            If you are searching for expert software developers for developing
+            any kind of.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col justify-center items-center w-[350px] h-[350px] border-4 gap-2 p-5"
+        >
+          <div class="w-20 h-20 bg-slate-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="p-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+            </svg>
+            
+          </div>
+          <h1>Digital Marketing</h1>
+          <p class="text-center">
+            Digital marketing is the use of the Internet, mobile devices, social
+            media, search engines, and other channels to reach consumers.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col justify-center items-center w-[350px] h-[350px] border-4 gap-2 p-5"
+        >
+          <div class="w-20 h-20 bg-slate-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="p-5">
+              <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+            </svg>
+            
+          </div>
+          <h1>Social Media</h1>
+          <p class="text-center">
+            Whether it's creating your digital product or just designing it,
+            whether it's engaging with your audiences or just.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col justify-center items-center w-[350px] h-[350px] border-4 gap-2 p-5"
+        >
+          <div class="w-20 h-20 bg-slate-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="p-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            
+          </div>
+          <h1>SEO</h1>
+          <p class="text-center">
+            Search engine optimization (SEO) is the process of improving the
+            ranking of your website in the leading search.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- pricing -->
+    <div
+      id="pricing"
+      class="flex flex-col items-center justify-center md:pt-20 bg-[#7ddcffe0] py-14 mt-16"
+    >
+      <div class="flex flex-col items-center justify-center gap-4">
+        <h1 class="text-6xl font-semibold text-[#292E3D] font-[Poppins]">
+          Our Pricing
+        </h1>
+        <p class="text-center font-[Poppins]">
+          It is a long established fact that a reader will be of a page when
+          established fact looking at its layout.
+        </p>
+      </div>
+
+      <div
+        class="grid grid-cols-1 gap-4 mt-4 leading-7 text-gray-900 border-0 border-gray-200 sm:mt-6 sm:gap-6 md:mt-8 md:gap-0 lg:grid-cols-3"
+      >
+        <!-- Price 1 -->
+        <div
+          class="relative flex flex-col items-center max-w-md p-4 mx-auto my-0 border border-black border-opacity-10 shadow-2xl border-solid rounded-lg lg:-mr-3 sm:my-0 sm:p-4 md:my-4 md:p-4"
+        >
+          <h3
+            class="m-0 text-xl font-semibold leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-2xl md:text-3xl"
+          >
+            Starter
+          </h3>
+          <div
+            class="flex items-end mt-4 leading-7 text-gray-900 border-0 border-gray-200"
+          >
+            <p class="m-0 text-4xl font-semibold leading-none">$1</p>
+            <p class="m-0">/ month</p>
+          </div>
+          <ul
+            class="flex-1 p-0 mt-2 ml-2 leading-7 text-gray-900 border-0 border-gray-200"
+          >
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              1 Website
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              SSL (HTTPS)
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              SiteFast Domain
+            </li>
+          </ul>
+          <a
+            href="#"
+            class="inline-flex justify-center w-full px-4 py-2 mt-4 text-sm leading-none text-center text-blue-600 no-underline bg-transparent border border-blue-600 rounded-md cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+          >
+            Start Now
+          </a>
+        </div>
+        <!-- Price 2 -->
+
+        <div
+          class="relative flex flex-col items-center max-w-md p-4 mx-auto my-0 bg-white border-2 shadow-md border-blue-600 border-solid rounded-lg sm:p-4 md:px-4 md:py-8"
+        >
+          <h3
+            class="m-0 text-xl font-semibold leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-2xl md:text-3xl"
+          >
+            Basic
+          </h3>
+          <div
+            class="flex items-end mt-4 leading-7 text-gray-900 border-0 border-gray-200"
+          >
+            <p class="m-0 text-4xl font-semibold leading-none">$29</p>
+            <p class="m-0">/ month</p>
+          </div>
+          <ul
+            class="flex-1 p-0 mt-10 ml-2 leading-7 items-center text-gray-900 border-0 border-gray-200"
+          >
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              15 Websites
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              SSL (HTTPS)
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              Custom Domain
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              SiteFast Branding Removal
+            </li>
+          </ul>
+          <a
+            href="#"
+            class="inline-flex justify-center w-full px-4 py-2 mt-4 text-sm leading-none text-center text-white no-underline bg-blue-600 border rounded-md cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+          >
+            Start Now
+          </a>
+        </div>
+        <!-- Price 3 -->
+        <div
+          class="relative flex flex-col items-center max-w-md p-4 mx-auto my-0 border border-black border-opacity-10 shadow-2xl border-solid rounded-lg lg:-ml-0 sm:my-0 sm:p-4 md:my-4 md:p-4"
+        >
+          <h3
+            class="m-0 text-xl font-semibold leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-2xl md:text-3xl"
+          >
+            Plus
+          </h3>
+          <div
+            class="flex items-end mt-4 leading-7 text-gray-900 border-0 border-gray-200"
+          >
+            <p class="m-0 text-4xl font-semibold leading-none">$49</p>
+            <p class="m-0">/ month</p>
+          </div>
+          <ul
+            class="flex-1 p-0 mt-2 ml-2 leading-7 text-gray-900 border-0 border-gray-200"
+          >
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              50 Websites
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              SSL (HTTPS)
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              Custom Domain
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              SiteFast Branding Removal
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              Google Analytics
+            </li>
+            <li
+              class="inline-flex items-center w-full mb-2 font-semibold text-left"
+            >
+              <svg
+                class="w-5 h-5 mr-2 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              Email Integration
+            </li>
+          </ul>
+          <a
+            href="#"
+            class="inline-flex justify-center w-full px-4 py-2 mt-4 text-sm leading-none text-center text-blue-600 no-underline bg-transparent border border-blue-600 rounded-md cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+          >
+            Start Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 
+about -->
+
+    <div
+      id="about"
+      class="flex flex-col gap-20 items-center py-8 lg:h-[100vh] bg-[#F7F7F7]"
+    >
+      <div
+        class="flex flex-col md:text-center md:px-6 lg:w-[800px] items-center justify-center text-center gap-6 pt-16"
+      >
+        <h1 class="font-semibold text-4xl text-[#292E3D] font-[Poppins]">
+          We'r dynamic team of talented people of innovative & developers
+        </h1>
+        <p class="font-[Poppins] text-center text-sm">
+          To achieve this, it would be necessary to have uniform grammar,
+          pronunciation and more common words. If several languages of the
+          resulting language.
+        </p>
+      </div>
+      <div class="grid gap-32 grid-cols-2 px-8 lg:grid-cols-4">
+        <div class="flex flex-col items-center gap-2">
+          <h1 class="text-4xl font-semibold font-[Poppins]">199k</h1>
+          <p class="font-[Poppins] text-center">Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <h1 class="text-4xl font-semibold font-[Poppins]">199k</h1>
+          <p class="font-[Poppins] text-center">Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <h1 class="text-4xl font-semibold font-[Poppins]">199k</h1>
+          <p class="font-[Poppins] text-center">Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <h1 class="text-4xl font-semibold font-[Poppins]">199k</h1>
+          <p class="font-[Poppins] text-center">Lorem ipsum dolor sit.</p>
+        </div>
+      </div>
+      <div
+        class="grid gap-20 lg:gap-32 grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+      >
+        <div class="flex flex-col gap-5">
+          <div
+            class="w-40 h-40 bg-[#F7F7F7] rounded-full border-8 border-white outline-blue-300 overflow-hidden"
+          >
+            <img
+              class="rounded-full"
+              src="https://themesdesign.in/landsay/layout/images/users/img5.jpg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col items-center">
+            <h1 class="text-2xl font-semibold text-gray-700">Shinde</h1>
+            <p class="text-xs font-semibold">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-5">
+          <div
+            class="w-40 h-40 bg-[#F7F7F7] rounded-full border-8 border-white outline-blue-300 overflow-hidden"
+          >
+            <img
+              class="rounded-full"
+              src="https://themesdesign.in/landsay/layout/images/users/img5.jpg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col items-center">
+            <h1 class="text-2xl font-semibold text-gray-700">Shinde</h1>
+            <p class="text-xs font-semibold">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-5">
+          <div
+            class="w-40 h-40 bg-[#F7F7F7] rounded-full border-8 border-white outline-blue-300 overflow-hidden"
+          >
+            <img
+              class="rounded-full"
+              src="https://themesdesign.in/landsay/layout/images/users/img5.jpg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col items-center">
+            <h6 class="text-2xl font-semibold text-gray-700">Shinde</h6>
+            <p class="text-xs font-semibold">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-5">
+          <div
+            class="w-40 h-40 bg-[#F7F7F7] rounded-full border-8 border-white outline-blue-300 overflow-hidden"
+          >
+            <img
+              class="rounded-full"
+              src="https://themesdesign.in/landsay/layout/images/users/img5.jpg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col items-center">
+            <h6 class="text-2xl font-semibold text-gray-700">Shinde</h6>
+            <p class="text-xs font-semibold">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- contact      -->
+    <div
+      id="contact"
+      class="flex flex-col gap-20 h-130vh items-center pt-8 lg:h-[120vh] bg-[#ffffff] pb-20"
+    >
+      <div
+        class="flex flex-col w-auto items-center justify-center text-center gap-6 pt-8"
+      >
+        <h1 class="font-semibold text-6xl text-[#292E3D] font-[Poppins]">
+          Contact Us
+        </h1>
+        <p
+          class="font-[Poppins] text-center w-80 md:w-auto lg:w-auto text-sm text-gray-500"
+        >
+          It is a long established fact that a reader will be of a page when
+          established fact looking at its layout.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-12 mt-5 lg:grid-cols-2">
+        <div class="grid grid-cols-2 p-5 gap-12 lg:grid-cols-2 md:grid-cols-2">
+          <div>
+            <span
+              class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                />
+              </svg>
+            </span>
+
+            <h2
+              class="mt-4 text-base font-medium text-gray-800 dark:text-white"
+            >
+              Email
+            </h2>
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              Our friendly team is here to help.
+            </p>
+            <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+              hello@merakiui.com
+            </p>
+          </div>
+          <div>
+            <span
+              class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                />
+              </svg>
+            </span>
+
+            <h2
+              class="mt-4 text-base font-medium text-gray-800 dark:text-white"
+            >
+              Live chat
+            </h2>
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              Our friendly team is here to help.
+            </p>
+            <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+              Start new chat
+            </p>
+          </div>
+          <div>
+            <span
+              class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                />
+              </svg>
+            </span>
+
+            <h2
+              class="mt-4 text-base font-medium text-gray-800 dark:text-white"
+            >
+              Office
+            </h2>
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              Come say hello at our office HQ.
+            </p>
+            <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+              100 Smith Street Collingwood VIC 3066 AU
+            </p>
+          </div>
+          <div>
+            <span
+              class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                />
+              </svg>
+            </span>
+
+            <h2
+              class="mt-4 text-base font-medium text-gray-800 dark:text-white"
+            >
+              Phone
+            </h2>
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              Mon-Fri from 8am to 5pm.
+            </p>
+            <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+              +1 (555) 000-0000
+            </p>
+          </div>
+        </div>
+        <div
+          class="p-3 mx-4 py-4 rounded-md bg-gray-50 dark:bg-gray-800 md:p-5 shadow-md"
+        >
+        <form id="contactForm">
+          <div class="-mx-2 md:items-center md:flex">
+            <div class="flex-1 px-2">
+              <label class="block mb-1 text-xs text-gray-600 dark:text-gray-200">First Name</label>
+              <input type="text" id="username" placeholder="John" class="block w-full px-3 py-1.5 mt-1 text-sm placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+            </div>
+        
+            <div class="flex-1 px-2 mt-3 md:mt-0">
+              <label class="block mb-1 text-xs text-gray-600 dark:text-gray-200">Last Name</label>
+              <input type="text" id="lastname" placeholder="Doe" class="block w-full px-3 py-1.5 mt-1 text-sm placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+            </div>
+          </div>
+        
+          <div class="mt-3">
+            <label class="block mb-1 text-xs text-gray-600 dark:text-gray-200">Email address</label>
+            <input type="email" id="email" placeholder="johndoe@example.com" class="block w-full px-3 py-1.5 mt-1 text-sm placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+          </div>
+        
+          <div class="mt-3">
+            <label class="block mb-1 text-xs text-gray-600 dark:text-gray-200">Phone Number</label>
+            <input type="text" id="phoneNO" placeholder="Phone Number" class="block w-full px-3 py-1.5 mt-1 text-sm placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+          </div>
+        
+          <div class="mt-3">
+            <label class="block mb-1 text-xs text-gray-600 dark:text-gray-200">City</label>
+            <input type="text" id="city" placeholder="City" class="block w-full px-3 py-1.5 mt-1 text-sm placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+          </div>
+        
+          <div class="w-full mt-3">
+            <label class="block mb-1 text-xs text-gray-600 dark:text-gray-200">Message</label>
+            <textarea id="message" class="block w-full h-16 px-3 py-1.5 mt-1 text-sm placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-40 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Message"></textarea>
+          </div>
+        
+          <button type="submit" class="w-full px-4 py-2 mt-3 text-xs font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">Send message</button>
+        </form>
+        
+        </div>
+      </div>
+    </div>
+    <!-- footer     -->
+    <footer
+      class="flex flex-col w-[100%] items-center bg-neutral-900 text-center text-white"
+    >
+      <div class="container px-6 pt-6">
+        <div class="mb-6 flex justify-center">
+          <a
+            href="#!"
+            type="button"
+            class="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mx-auto h-full w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+              />
+            </svg>
+          </a>
+          <a
+            href="#!"
+            type="button"
+            class="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mx-auto h-full w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+              />
+            </svg>
+          </a>
+          <a
+            href="#!"
+            type="button"
+            class="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mx-auto h-full w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42 0-2.44 1.95-4.42 4.34-4.42 1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61zm0 0 17 2h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+          <a
+            href="#!"
+            type="button"
+            class="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mx-auto h-full w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+          <a
+            href="#!"
+            type="button"
+            class="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mx-auto h-full w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"
+              />
+            </svg>
+          </a>
+          <a
+            href="#!"
+            type="button"
+            class="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mx-auto h-full w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!--Copyright section-->
+      <div
+        class="w-full p-4 text-center"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+      >
+        © 2023 Copyright:
+        <a class="text-whitehite" href="#">Metaltroop.co</a>
+        <button></button>
+      </div>
+    </footer>
+    <button
+      id="to-top-button"
+      onclick="goToTop()"
+      title="Go To Top"
+      class="hidden fixed z-90 bottom-8 right-8 border-0 w-12 h-12 rounded-full drop-shadow-md bg-gray-800 text-white text-3xl font-bold"
+    >
+      &uarr;
+    </button>
+    <script>
+      var toTopButton = document.getElementById("to-top-button");
+      // When the user scrolls down 200px from the top of the document, show the button
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 200 ||
+          document.documentElement.scrollTop > 200
+        ) {
+          toTopButton.classList.remove("hidden");
+        } else {
+          toTopButton.classList.add("hidden");
+        }
+      };
+      // When the user clicks on the button, smoothy scroll to the top of the document
+      function goToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
